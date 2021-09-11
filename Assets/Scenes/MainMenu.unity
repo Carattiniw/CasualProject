@@ -452,7 +452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d38997aed588c0c46a042de707c08883, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newGameScene: LevelOne
+  newGameScene: SolidTutorial
   backToMainMenu: 
   controlMenu: Controls
   ES: {fileID: 1685936749}

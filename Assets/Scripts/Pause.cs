@@ -13,7 +13,6 @@ public class Pause : MonoBehaviour
     public GameObject resumeMenuButton;
     public EventSystem ES;
     private GameObject StoreSelected;
-    private bool isGamePaused;
     private bool viewedControls;
 
 
@@ -42,7 +41,7 @@ public class Pause : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Cancel"))
         {
-            if (isGamePaused == true)
+            if (GameManager.Instance.pause == true)
             {
                 unpauseGame();
             }
@@ -59,7 +58,7 @@ public class Pause : MonoBehaviour
 
         if (controlMenu.activeSelf == false)
         {
-            if (isGamePaused == true && viewedControls == true)
+            if (GameManager.Instance.pause == true && viewedControls == true)
             {
                 hideControlsScreen();
                 //only way I could figure out how to get the resume button to be selected again after viewing controls screen
@@ -74,16 +73,15 @@ public class Pause : MonoBehaviour
 
     public void pauseGame()
     {
-        isGamePaused = true;
+        GameManager.Instance.pause = true;
         pauseScreen.SetActive(true);
         Time.timeScale = 0f; //freezes game
-        //GameManager.Instance.pause;
         GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(resumeMenuButton, null);
     }
 
     public void unpauseGame()
     {
-        isGamePaused = false;
+        GameManager.Instance.pause = false;
         pauseScreen.SetActive(false);
         Time.timeScale = 1f; //unfreeze game
     }

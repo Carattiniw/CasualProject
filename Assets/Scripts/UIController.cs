@@ -14,6 +14,10 @@ public class UIController : MonoBehaviour
 
     public CharacterController controller;
 
+    public bool tutorialSolidOnly;
+    public bool tutorialGasOnly;
+    public bool tutorialLiquidOnly;
+
     [Header("State of Matter")]
     //States: 0 = Solid, 1 = Liquid, 2 = Gas | ARRAY FIRST INDEX IS 0 NOT 1
     [HideInInspector] public string[] states = { "Solid", "Liquid", "Gas" };
@@ -26,6 +30,21 @@ public class UIController : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
+
+        if (tutorialSolidOnly == true)
+        {
+            currentStateIndex = 0;
+        }
+
+        if (tutorialLiquidOnly == true)
+        {
+            currentStateIndex = 1;
+        }
+
+        if (tutorialGasOnly == true)
+        {
+            currentStateIndex = 2;
+        }
     }
 
 
@@ -41,6 +60,22 @@ public class UIController : MonoBehaviour
             /*Cycle forward one state, looping back from solid to gas*/
             if (Input.GetButtonUp("Jump") || Input.GetButtonUp("Fire1"))
             {
+                if (tutorialSolidOnly == true)
+                {
+                    return;
+                }
+
+                if (tutorialLiquidOnly == true)
+                {
+                    return;
+                }
+
+                if (tutorialGasOnly == true)
+                {
+                    return;
+                }
+
+
                 if (currentStateIndex >= states.Length - 1)
                 {
                     currentStateIndex = 0;
@@ -52,6 +87,22 @@ public class UIController : MonoBehaviour
             /*Cycle backward one state, looping back to gas from solid*/
             if (Input.GetButtonUp("Fire2"))
             {
+                if (tutorialSolidOnly == true)
+                {
+                    return;
+                }
+
+                if (tutorialLiquidOnly == true)
+                {
+                    return;
+                }
+
+                if (tutorialGasOnly == true)
+                {
+                    return;
+                }
+
+
                 if (currentStateIndex <= 0)
                 {
                     currentStateIndex = 2;
