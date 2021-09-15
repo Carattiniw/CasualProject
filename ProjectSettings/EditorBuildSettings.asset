@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LiquidTutorial.unity
     guid: ad42c3961dfc2bd48a748ecab384ff3d
+  - enabled: 1
+    path: Assets/Scenes/ArtGallery.unity
+    guid: 28d4909379bab054f98bc60c1b312b5b
   m_configObjects: {}
