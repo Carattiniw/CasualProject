@@ -8,15 +8,16 @@ public class PlayerController : MonoBehaviour
 {
     public CharacterController controller;
     public float speed;
+    public float verticalInput;
     public bool tutorialSolidOnly;
     public bool tutorialGasOnly;
     public bool tutorialLiquidOnly;
-    //public float jumpForce;
 
     private Rigidbody rb;
     private float mass;
 
-    Vector3 jumpForce;
+    public Vector3 jumpForce;
+    public bool isGrounded;
 
     [Header("State of Matter")]
     //States: 0 = Solid, 1 = Liquid, 2 = Gas | ARRAY FIRST INDEX IS 0 NOT 1
@@ -28,8 +29,6 @@ public class PlayerController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         rb = GetComponent<Rigidbody>();
-        rb.mass = 1.0f;
-        jumpForce = new Vector3(0.0f, 10.0f, 0.0f);
 
         if (tutorialSolidOnly == true)
         {
@@ -58,57 +57,40 @@ public class PlayerController : MonoBehaviour
             /*Cycle forward one state, looping back from solid to gas*/
             if (Input.GetButtonUp("Jump") || Input.GetButtonUp("Fire1"))
             {
-                if (tutorialSolidOnly == true)
+                if (tutorialSolidOnly == true || tutorialLiquidOnly == true || tutorialGasOnly == true)
                 {
                     return;
-                }
-
-                if (tutorialLiquidOnly == true)
-                {
-                    return;
-                }
-
-                if (tutorialGasOnly == true)
-                {
-                    return;
-                }
-
-                if (currentStateIndex >= states.Length - 1)
-                {
-                    currentStateIndex = 0;
                 }
                 else
-                    currentStateIndex += 1;
+                {
+                    if (currentStateIndex >= states.Length - 1)
+                    {
+                        currentStateIndex = 0;
+                    }
+                    else
+                        currentStateIndex += 1;
+                }
             }
 
             /*Cycle backward one state, looping back to gas from solid*/
             if (Input.GetButtonUp("Fire2"))
             {
-                if (tutorialSolidOnly == true)
+                if (tutorialSolidOnly == true || tutorialLiquidOnly == true || tutorialGasOnly == true)
                 {
                     return;
-                }
-
-                if (tutorialLiquidOnly == true)
-                {
-                    return;
-                }
-
-                if (tutorialGasOnly == true)
-                {
-                    return;
-                }
-
-                if (currentStateIndex <= 0)
-                {
-                    currentStateIndex = 2;
                 }
                 else
-                    currentStateIndex -= 1;
+                {
+
+                    if (currentStateIndex <= 0)
+                    {
+                        currentStateIndex = 2;
+                    }
+                    else
+                        currentStateIndex -= 1;
+                }
             }
         }
-        else
-            return;
     }
 
     private void FixedUpdate()
@@ -118,6 +100,17 @@ public class PlayerController : MonoBehaviour
             if (currentStateString == "Solid")
             {
                 SolidMovement();
+
+                if (isGrounded == true)
+                {
+                    verticalInput = Input.GetAxisRaw("Vertical");
+                    if (verticalInput > 0.0f)
+                    {
+                        Debug.Log("I'm gonna jump!");
+                        //rb.AddForce((Vector3.up * jumpForce), ForceMode.Impulse);
+                        rb.AddForce(jumpForce, ForceMode.Impulse);
+                    }
+                }
             }
             if (currentStateString == "Liquid")
             {
@@ -129,25 +122,23 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
-    void OnCollisionStay(Collision collision)
+    void OnCollisionEnter(Collision collision)
     {
         //only works if player is touching the ground and is in solid state
-        if (collision.collider.tag == "Floor" && currentStateString == "Solid")
+        if (collision.collider.tag == "Floor")
         //if (currentStateString == "Solid") //testing only
         //if (collision.collider.tag == "Floor") //testing only
         {
-            float x = Input.GetAxis("Horizontal");
-            //only jump if player is moving either left or right
-            if (x > 0.0f || x < 0.0f)
-            {
-                Debug.Log("I'm gonna jump!");
-                //rb.AddForce((Vector3.up * jumpForce), ForceMode.Impulse);
-                rb.AddForce(jumpForce, ForceMode.Impulse);
-            }
+            isGrounded = true;
         }
     }
-
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.collider.tag == "Floor")
+        {
+            isGrounded = false;
+        }
+    }
     private void SolidMovement()
     {//Solid State Movement
         //Debug.Log("Solid");
