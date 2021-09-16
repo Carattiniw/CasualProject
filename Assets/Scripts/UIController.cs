@@ -12,41 +12,18 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private Image imgLiquid;
 
-    public CharacterController controller;
+    public Animator animator;
+    public AnimatorStateInfo animatorState;
 
-    public bool tutorialSolidOnly;
-    public bool tutorialGasOnly;
-    public bool tutorialLiquidOnly;
-
-    [Header("State of Matter")]
-    //States: 0 = Solid, 1 = Liquid, 2 = Gas | ARRAY FIRST INDEX IS 0 NOT 1
-    [HideInInspector] public string[] states = { "Solid", "Liquid", "Gas" };
-    public int currentStateIndex = 0;
-    public string currentStateString;
-
+    public PlayerController player;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        controller = GetComponent<CharacterController>();
-
-        if (tutorialSolidOnly == true)
-        {
-            currentStateIndex = 0;
-        }
-
-        if (tutorialLiquidOnly == true)
-        {
-            currentStateIndex = 1;
-        }
-
-        if (tutorialGasOnly == true)
-        {
-            currentStateIndex = 2;
-        }
+        player = FindObjectOfType<PlayerController>();
+        animator = GetComponent<Animator>();
     }
-
 
     // Update is called once per frame
     void Update()
@@ -54,103 +31,71 @@ public class UIController : MonoBehaviour
         /*Pause and Main Menu check*/
         if (GameManager.Instance.pause == false)
         {
-            //Track current state;
-            currentStateString = states[currentStateIndex];
-
-            /*Cycle forward one state, looping back from solid to gas*/
-            if (Input.GetButtonUp("Jump") || Input.GetButtonUp("Fire1"))
-            {
-                if (tutorialSolidOnly == true)
-                {
-                    return;
-                }
-
-                if (tutorialLiquidOnly == true)
-                {
-                    return;
-                }
-
-                if (tutorialGasOnly == true)
-                {
-                    return;
-                }
-
-
-                if (currentStateIndex >= states.Length - 1)
-                {
-                    currentStateIndex = 0;
-                }
-                else
-                    currentStateIndex += 1;
-            }
-
-            /*Cycle backward one state, looping back to gas from solid*/
-            if (Input.GetButtonUp("Fire2"))
-            {
-                if (tutorialSolidOnly == true)
-                {
-                    return;
-                }
-
-                if (tutorialLiquidOnly == true)
-                {
-                    return;
-                }
-
-                if (tutorialGasOnly == true)
-                {
-                    return;
-                }
-
-
-                if (currentStateIndex <= 0)
-                {
-                    currentStateIndex = 2;
-                }
-                else
-                    currentStateIndex -= 1;
-            }
-        }
-        else
-            return;
-    }
-
-
-
-    private void FixedUpdate()
-    {
-        if (GameManager.Instance.pause == false)
-        {
-            if (currentStateString == "Solid")
+            if (player.currentStateString == "Solid")
             {
                 //Debug.Log(currentStateString);
                 imgSolid.material = new Material(imgSolid.material);
                 imgSolid.material.color = Color.Lerp(Color.white, Color.grey, Mathf.PingPong(Time.time, 1));
+                imgSolid.rectTransform.localPosition = new Vector3(51, -20);
+                imgSolid.rectTransform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
 
-                //make inactive states grey on the UI
+                //make inactive states grey on the UI and move them
                 imgGas.material.color = Color.Lerp(Color.grey, Color.grey, Mathf.PingPong(Time.time, 1));
+                imgGas.rectTransform.localPosition = new Vector3 (-30, 34, 0);
+                imgGas.rectTransform.localScale = new Vector3 (0.5f, 0.5f);
+
                 imgLiquid.material.color = Color.Lerp(Color.grey, Color.grey, Mathf.PingPong(Time.time, 1));
+                imgLiquid.rectTransform.localPosition = new Vector3(51, 69, 0);
+                imgLiquid.rectTransform.localScale = new Vector3(0.7f, 0.7f);
             }
-            if (currentStateString == "Liquid")
+            if (player.currentStateString == "Liquid")
             {
                 //Debug.Log(currentStateString);
                 imgLiquid.material = new Material(imgSolid.material);
                 imgLiquid.material.color = Color.Lerp(Color.white, Color.grey, Mathf.PingPong(Time.time, 1));
+                imgLiquid.rectTransform.localPosition = new Vector3(55, -30);
+                imgLiquid.rectTransform.localScale = new Vector3(1, 1);
 
-                //make inactive states grey on the UI
+                //make inactive states grey on the UI and move them
                 imgSolid.material.color = Color.Lerp(Color.grey, Color.grey, Mathf.PingPong(Time.time, 1));
+                imgSolid.rectTransform.localPosition = new Vector3(-30, 38);
+                imgSolid.rectTransform.localScale = new Vector3(0.5f, 0.5f);
+
                 imgGas.material.color = Color.Lerp(Color.grey, Color.grey, Mathf.PingPong(Time.time, 1));
+                imgGas.rectTransform.localPosition = new Vector3(52, 70);
+                imgGas.rectTransform.localScale = new Vector3(0.5f, 0.5f);
             }
-            if (currentStateString == "Gas")
+            if (player.currentStateString == "Gas")
             {
                 //Debug.Log(currentStateString);
                 imgGas.material = new Material(imgSolid.material);
                 imgGas.material.color = Color.Lerp(Color.white, Color.grey, Mathf.PingPong(Time.time, 1));
+                imgGas.rectTransform.localPosition = new Vector3(52.5f, -28.6f);
+                imgGas.rectTransform.localScale = new Vector3(0.85f, 0.85f);
 
-                //make inactive states grey on the UI
+                //make inactive states grey on the UI and move them
                 imgSolid.material.color = Color.Lerp(Color.grey, Color.grey, Mathf.PingPong(Time.time, 1));
+                imgSolid.rectTransform.localPosition = new Vector3(50, 75);
+                imgSolid.rectTransform.localScale = new Vector3(0.5f, 0.5f);
+
                 imgLiquid.material.color = Color.Lerp(Color.grey, Color.grey, Mathf.PingPong(Time.time, 1));
+                imgLiquid.rectTransform.localPosition = new Vector3(-28, 33);
+                imgLiquid.rectTransform.localScale = new Vector3(0.7f, 0.7f);
             }
         }
+    }
+
+    public void EnableStateIcons()
+    {
+        imgSolid.enabled = true;
+        imgLiquid.enabled = true;
+        imgGas.enabled = true;
+    }
+
+    public void DisableStateIcons()
+    {
+        imgSolid.enabled = false;
+        imgLiquid.enabled = false;
+        imgGas.enabled = false;
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class FanPhysics : MonoBehaviour
 {
     public GameObject player;
-    public CharacterController charctrlr;
+    public Rigidbody rb;
     public string playerCurrentState;
 
     public GameObject fan;
@@ -14,7 +14,7 @@ public class FanPhysics : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player");
-        charctrlr = player.GetComponentInChildren<CharacterController>();
+        rb = player.GetComponentInChildren<Rigidbody>();
         fan= gameObject;
        fanZone = gameObject.GetComponent<CapsuleCollider>();
     }
@@ -27,7 +27,7 @@ public class FanPhysics : MonoBehaviour
     {
         if (other.gameObject == player && (playerCurrentState == "Liquid" || playerCurrentState == "Gas"))
         {
-            charctrlr.SimpleMove(new Vector3(0f, ((player.transform.position.y - fan.transform.position.y) *fanForce * Time.deltaTime), ((player.transform.position.z - fan.transform.position.z) * fanForce * Time.deltaTime)));
+            rb.AddForce(new Vector3(0f, 0f, fanForce), ForceMode.Impulse);
         }
     }
 }

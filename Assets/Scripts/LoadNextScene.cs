@@ -6,11 +6,12 @@ using UnityEngine.SceneManagement;
 public class LoadNextScene : MonoBehaviour
 {
     public string loadNextLevel;
-    private Rigidbody rb;
 
-
-    void OnCollisionStay(Collision collision)
+    void OnTriggerEnter(Collider collider)
     {
-        SceneManager.LoadScene(loadNextLevel);
+        if (collider.gameObject.CompareTag("Player"))
+        {
+            SceneManager.LoadScene(loadNextLevel);
+        }
     }
 }

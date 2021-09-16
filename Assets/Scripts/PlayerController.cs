@@ -6,18 +6,19 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
-    public CharacterController controller;
+   // public CharacterController controller;
     public float speed;
     public float verticalInput;
+   
     public bool tutorialSolidOnly;
     public bool tutorialGasOnly;
     public bool tutorialLiquidOnly;
 
     private Rigidbody rb;
-    private float mass;
 
     public Vector3 jumpForce;
     public bool isGrounded;
+    public bool isMagnetized;
 
     [Header("State of Matter")]
     //States: 0 = Solid, 1 = Liquid, 2 = Gas | ARRAY FIRST INDEX IS 0 NOT 1
@@ -25,9 +26,12 @@ public class PlayerController : MonoBehaviour
     public int currentStateIndex = 0;
     public string currentStateString;
 
+    public Animator animator;
+
     private void Awake()
     {
-        controller = GetComponent<CharacterController>();
+        animator = FindObjectOfType<Animator>();
+        //controller = GetComponent<CharacterController>();
         rb = GetComponent<Rigidbody>();
 
         if (tutorialSolidOnly == true)
@@ -54,7 +58,7 @@ public class PlayerController : MonoBehaviour
             //Track current state;
             currentStateString = states[currentStateIndex];
 
-            /*Cycle forward one state, looping back from solid to gas*/
+            /*Cycle forward one state, looping back to solid from gas*/
             if (Input.GetButtonUp("Jump") || Input.GetButtonUp("Fire1"))
             {
                 if (tutorialSolidOnly == true || tutorialLiquidOnly == true || tutorialGasOnly == true)
@@ -63,12 +67,16 @@ public class PlayerController : MonoBehaviour
                 }
                 else
                 {
-                    if (currentStateIndex >= states.Length - 1)
+                    if (currentStateIndex == 2)
                     {
+                        animator.SetTrigger("stateChange");
                         currentStateIndex = 0;
                     }
                     else
+                    {
+                        animator.SetTrigger("stateChange");
                         currentStateIndex += 1;
+                    }
                 }
             }
 
@@ -81,13 +89,16 @@ public class PlayerController : MonoBehaviour
                 }
                 else
                 {
-
-                    if (currentStateIndex <= 0)
+                    if (currentStateIndex == 0)
                     {
+                        animator.SetTrigger("stateChange");
                         currentStateIndex = 2;
                     }
                     else
+                    {
+                        animator.SetTrigger("stateChange");
                         currentStateIndex -= 1;
+                    }
                 }
             }
         }
@@ -100,17 +111,6 @@ public class PlayerController : MonoBehaviour
             if (currentStateString == "Solid")
             {
                 SolidMovement();
-
-                if (isGrounded == true)
-                {
-                    verticalInput = Input.GetAxisRaw("Vertical");
-                    if (verticalInput > 0.0f)
-                    {
-                        Debug.Log("I'm gonna jump!");
-                        //rb.AddForce((Vector3.up * jumpForce), ForceMode.Impulse);
-                        rb.AddForce(jumpForce, ForceMode.Impulse);
-                    }
-                }
             }
             if (currentStateString == "Liquid")
             {
@@ -140,34 +140,59 @@ public class PlayerController : MonoBehaviour
         }
     }
     private void SolidMovement()
-    {//Solid State Movement
-        //Debug.Log("Solid");
-        speed = 400f;
-        rb.mass = 1.0f;
-        float x = Input.GetAxis("Horizontal");
-        
-        Vector3 move = transform.forward * x;
-        controller.SimpleMove(move * speed * Time.deltaTime);
+    {//Solid State Movement Parameters
+
+        rb.useGravity = true;
+        speed = 45f;
+        rb.mass = 0f;
+
+        if (isGrounded == false && isMagnetized == false)
+        {
+            rb.velocity = new Vector3(0, -25, 0);
+        }
+        else
+        {
+            rb.drag = 5f;
+
+            float x = Input.GetAxis("Horizontal");
+
+            Vector3 move = transform.forward * x * speed;
+            rb.AddForce(move, ForceMode.Acceleration);
+        }
     }
     private void LiquidMovement()
-    {//Liquid State Movement
-        //Debug.Log("Liquid");
-        speed = 1250f;
-        rb.mass = 1.0f;
+    {//Liquid State Movement Parameters
+
+        if(isGrounded == false)
+        {
+            rb.AddForce(new Vector3 (0, -9.8f * - 9.8f / -3, 0));
+        }
+
+        speed = 125f;
+        rb.mass = 1f;
+        rb.drag = 2.5f;
+        rb.angularDrag = 0.25f;
+        rb.useGravity = true;
+
         float x = Input.GetAxis("Horizontal");
 
-        Vector3 move = transform.forward * x;
-        controller.SimpleMove(move * speed * Time.deltaTime);
+        Vector3 move = transform.forward * x * speed;
+        rb.AddForce(move, ForceMode.Acceleration);
     }
         private void GasMovement()
     {//Gas State Movement
         //Debug.Log("Gas");
+        rb.mass = 5f;
+        rb.drag = 5f;
+        rb.angularDrag = 0f;
+        rb.useGravity = false;
+        
         speed = 2.5f;
         rb.mass = 1.0f;
-        float x = Input.GetAxis("Horizontal") * 2;
-        float y = 2f;
+        float x = Input.GetAxis("Horizontal") * 25f;
+        float y = 5f;
 
-        Vector3 move = transform.forward * x + transform.up * y;
-        controller.Move(move * speed * Time.deltaTime);
+        Vector3 move = transform.forward * x  * speed + transform.up * y * speed;
+        rb.AddForce(move, ForceMode.Acceleration);
     }
 }
