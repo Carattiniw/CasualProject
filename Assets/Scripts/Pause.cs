@@ -68,6 +68,7 @@ public class Pause : MonoBehaviour
 
     public void returnToMainMenu()
     {
+        //pauseScreen.SetActive(false); test to get rid of dark main menu after play
         SceneManager.LoadScene(backToMainMenu);
     }
 
