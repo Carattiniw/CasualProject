@@ -8,12 +8,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Platform_Base_MAT
-    second: {fileID: 2100000, guid: e23d49f173241d649b566c95c14d0e7d, type: 2}
+    second: {fileID: 2100000, guid: f656238c31263e24382c7638c88171d7, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Platform_Metal_MAT
-    second: {fileID: 2100000, guid: c8bc6a438f28b854db8ba26b78499871, type: 2}
+    second: {fileID: 2100000, guid: 91b0fb9fd92388540b9d852714552613, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule

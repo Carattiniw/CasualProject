@@ -8,12 +8,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: SquarePlatform_Base_MAT
-    second: {fileID: 2100000, guid: 7f30e037c9486414e82aa7a54c478c49, type: 2}
+    second: {fileID: 2100000, guid: 4985940c9e82dc545a774ce2afa89f6c, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: SquarePlatform_Metal_MAT
-    second: {fileID: 2100000, guid: 697fe5d8c20069b479218e7ff57f6700, type: 2}
+    second: {fileID: 2100000, guid: c69e707a42419994ba16c2bcdd6265e4, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule

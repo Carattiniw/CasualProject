@@ -8,12 +8,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Magnet_Base_MAT
-    second: {fileID: 2100000, guid: d742ba676a1e25842aef3aff7522376a, type: 2}
+    second: {fileID: 2100000, guid: 69f5726f91f2a89449a54cd79cc62ded, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Magnet_Wire_MAT
-    second: {fileID: 2100000, guid: 0e11b18db43983147ba5715b4c31e5e5, type: 2}
+    second: {fileID: 2100000, guid: 373d4108220ee1b49a5cda4a1f71b143, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule

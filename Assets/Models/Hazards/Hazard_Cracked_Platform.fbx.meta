@@ -5,6 +5,21 @@ ModelImporter:
   internalIDToNameTable: []
   externalObjects:
   - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CrackedPlat_Cracks_MAT
+    second: {fileID: 2100000, guid: 39bc914199c8af6419cb57d7c9c0cb24, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CrackedPlat_Metal_MAT
+    second: {fileID: 2100000, guid: a734d5dd1bffbe54cb10860b103060f8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CrackedPlat_Nondamaged_MAT
+    second: {fileID: 2100000, guid: 3b83a6b2aaeaf5c4498bb9a0b4b6f94c, type: 2}
+  - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: CrackedBump

@@ -7,10 +7,13 @@ using UnityEngine.EventSystems;
 public class Pause : MonoBehaviour
 {
     public string backToMainMenu;
+    public string levelNameToRestart;
     public GameObject pauseScreen;
     public GameObject controlMenu;
+    public GameObject restartLevelScreen;
     public GameObject controlMenuButton;
     public GameObject resumeMenuButton;
+    public GameObject restartLevelButton;
     public EventSystem ES;
     private GameObject StoreSelected;
     private bool viewedControls;
@@ -99,5 +102,13 @@ public class Pause : MonoBehaviour
         viewedControls = false;
         controlMenu.SetActive(false);
         GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(resumeMenuButton, null);
+    }
+
+    public void restartLevel()
+    {
+        Time.timeScale = 0f;
+        restartLevelScreen.SetActive(true);
+        GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(restartLevelButton, null);
+        SceneManager.LoadScene(levelNameToRestart);
     }
 }

@@ -20,12 +20,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Fan_Base_MAT
-    second: {fileID: 2100000, guid: a4991d15bcef98d4aae6b1d5b4f76d98, type: 2}
+    second: {fileID: 2100000, guid: a1739d3931a0e5946a26f7af2bfae1bc, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Fan_Nose_Blades_MAT
-    second: {fileID: 2100000, guid: c56344bda20b2b040b2c446c5cf5793b, type: 2}
+    second: {fileID: 2100000, guid: 9e061b0bfae9daa42b992ac9a40b8a0e, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule

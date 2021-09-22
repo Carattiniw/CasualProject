@@ -9,6 +9,7 @@ public class TitleScreenMenu : MonoBehaviour
     public string newGameScene;
     public string backToMainMenu;
     public string controlMenu;
+    public string creditsScreen;
     public EventSystem ES;
     private GameObject StoreSelected;
 
@@ -47,6 +48,11 @@ public class TitleScreenMenu : MonoBehaviour
     public void openControlsMenu()
     {
         SceneManager.LoadScene(controlMenu);
+    }
+
+    public void openCredits()
+    {
+        SceneManager.LoadScene(creditsScreen);
     }
 
     public void quitGame()

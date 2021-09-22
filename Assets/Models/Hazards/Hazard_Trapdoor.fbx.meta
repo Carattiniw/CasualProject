@@ -20,22 +20,22 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: TrapDoor_Door_MAT
-    second: {fileID: 2100000, guid: 83e6e83c2cafdb84984fd7302b724a2d, type: 2}
+    second: {fileID: 2100000, guid: 78d8f788d1ba5254d87a53ea68a31b1e, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Trap_Doorway_MAT
-    second: {fileID: 2100000, guid: ac48da964096f064590a77717ab16faf, type: 2}
+    second: {fileID: 2100000, guid: 458a789310177ab4d80d5becfedd2ac2, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Trapdoor_Glass_MAT
-    second: {fileID: 2100000, guid: 702f2f02d82f13b47bc30a447d5b209b, type: 2}
+    second: {fileID: 2100000, guid: abe0e3700551b68449f7505ae4b5f9af, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: TrrapDoor_MetalParts_MAT
-    second: {fileID: 2100000, guid: 5278249c846d6744e98bbb0cce6c179e, type: 2}
+    second: {fileID: 2100000, guid: daea51e724377ee4abba5d448ba34b58, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule

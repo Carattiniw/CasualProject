@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Pipe_L_MAT
-    second: {fileID: 2100000, guid: fd39f4233095e7b4f828cba3d0a73cad, type: 2}
+    second: {fileID: 2100000, guid: 562a4579e9130fb40afc1bef1f7e6437, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
