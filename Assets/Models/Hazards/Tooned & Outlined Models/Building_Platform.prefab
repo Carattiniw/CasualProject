@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3277449133160319646}
   - component: {fileID: 765367668399029844}
   - component: {fileID: 2116327298472315261}
+  - component: {fileID: -3347473855378837525}
   m_Layer: 0
   m_Name: Building_Platform
   m_TagString: Untagged
@@ -101,3 +102,16 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!65 &-3347473855378837525
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269977328932462465}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 400, y: 200, z: 299.47113}
+  m_Center: {x: 0.0000076293945, y: -0.0000038146973, z: 0.0000076293945}
