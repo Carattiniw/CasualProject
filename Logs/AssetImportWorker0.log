@@ -1,220 +1,78 @@
 Using pre-set license
 Built from '2020.3/staging' branch; Version is '2020.3.17f1 (a4537701e4ab) revision 10769271'; Using compiler version '192528614'; Build Type 'Release'
-OS: 'Windows 10 Home; OS build 19042.1237; Version 2009; 64bit' Language: 'en' Physical Memory: 16261 MB
+OS: 'Windows 10 Home; OS build 19042.1237; Version 2009; 64bit' Language: 'en' Physical Memory: 8091 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
 COMMAND LINE ARGUMENTS:
-C:\Program Files\Unity\Hub\Editor\2020.3.17f1\Editor\Unity.exe
+E:\Unity Versions\2020.3.17f1\Editor\Unity.exe
 -adb2
 -batchMode
 -noUpm
 -name
 AssetImportWorker0
 -projectPath
-C:/Users/cmper/OneDrive/Documents/Unity/CasualProject
+E:/CasualProject
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-51371
-Successfully changed project path to: C:/Users/cmper/OneDrive/Documents/Unity/CasualProject
-C:/Users/cmper/OneDrive/Documents/Unity/CasualProject
+52461
+Successfully changed project path to: E:/CasualProject
+E:/CasualProject
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 58.51 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 155.76 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.17f1 (a4537701e4ab)
-[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.17f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path C:/Users/cmper/OneDrive/Documents/Unity/CasualProject/Assets
+[Subsystems] Discovering subsystems at path E:/Unity Versions/2020.3.17f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path E:/CasualProject/Assets
 GfxDevice: creating device client; threaded=0
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
-    Renderer: NVIDIA GeForce RTX 2060 (ID=0x1f11)
+    Renderer: NVIDIA GeForce GTX 970M (ID=0x13d8)
     Vendor:   
-    VRAM:     5980 MB
-    Driver:   27.21.14.6280
+    VRAM:     3029 MB
+    Driver:   30.0.14.7111
 Initialize mono
-Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.17f1/Editor/Data/Managed'
-Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.17f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
-Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.17f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56380
+Mono path[0] = 'E:/Unity Versions/2020.3.17f1/Editor/Data/Managed'
+Mono path[1] = 'E:/Unity Versions/2020.3.17f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'E:/Unity Versions/2020.3.17f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56928
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
-Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.17f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.001848 seconds.
+Register platform support module: E:/Unity Versions/2020.3.17f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: E:/Unity Versions/2020.3.17f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.600331 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 54.11 ms, found 2 plugins.
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 117.40 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.057 seconds
+- Completed reload, in  5.861 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1058ms)
-		BeginReloadAssembly (50ms)
+	ReloadAssembly (5862ms)
+		BeginReloadAssembly (134ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (406ms)
-			LoadAssemblies (47ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (138ms)
+			CreateAndSetChildDomain (2ms)
+		EndReloadAssembly (847ms)
+			LoadAssemblies (145ms)
+			RebuildTransferFunctionScriptingTraits (2ms)
+			SetupTypeCache (265ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (28ms)
-			SetupLoadedEditorAssemblies (173ms)
+			RebuildScriptCaches (83ms)
+			SetupLoadedEditorAssemblies (345ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (3ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (54ms)
-				BeforeProcessingInitializeOnLoad (15ms)
-				ProcessInitializeOnLoadAttributes (74ms)
-				ProcessInitializeOnLoadMethodAttributes (26ms)
+				InitializePlatformSupportModulesInManaged (18ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (118ms)
+				BeforeProcessingInitializeOnLoad (17ms)
+				ProcessInitializeOnLoadAttributes (142ms)
+				ProcessInitializeOnLoadMethodAttributes (49ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.005251 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 62.85 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.209 seconds
-Domain Reload Profiling:
-	ReloadAssembly (1209ms)
-		BeginReloadAssembly (130ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (4ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (17ms)
-		EndReloadAssembly (1020ms)
-			LoadAssemblies (88ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (300ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (58ms)
-			SetupLoadedEditorAssemblies (453ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (3ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (63ms)
-				BeforeProcessingInitializeOnLoad (98ms)
-				ProcessInitializeOnLoadAttributes (278ms)
-				ProcessInitializeOnLoadMethodAttributes (4ms)
-				AfterProcessingInitializeOnLoad (6ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (6ms)
-Platform modules already initialized, skipping
-========================================================================
-Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.08 seconds
-Refreshing native plugins compatible for Editor in 0.53 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3241 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 153.5 MB.
-System memory in use after: 153.7 MB.
-
-Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 3678.
-Total: 3.500700 ms (FindLiveObjects: 0.307600 ms CreateObjectMapping: 0.174700 ms MarkObjects: 2.921300 ms  DeleteObjects: 0.095600 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  path: Assets/Prefabs/Final Hazards/Hazard_Magnet.prefab
-  artifactKey: Guid(0f7cb16d5e1dd9745bdd761409a6e66b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Final Hazards/Hazard_Magnet.prefab using Guid(0f7cb16d5e1dd9745bdd761409a6e66b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f17771ac127dc26f7fecaa986903b232') in 0.235390 seconds 
-  Import took 0.240523 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000316 seconds.
-  path: Assets/Prefabs/Final Hazards/Hazard_Pipe_L.prefab
-  artifactKey: Guid(a85b406094047ab42b61d6c0c26ed388) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Final Hazards/Hazard_Pipe_L.prefab using Guid(a85b406094047ab42b61d6c0c26ed388) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8237d6b4e770c3894e85ba352b6e2048') in 0.020644 seconds 
-  Import took 0.026069 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000275 seconds.
-  path: Assets/Prefabs/ShiftyPhysicsMaterial.physicMaterial
-  artifactKey: Guid(799507d45059e68458d22fcfb04a1570) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/ShiftyPhysicsMaterial.physicMaterial using Guid(799507d45059e68458d22fcfb04a1570) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '21fe2ab25093e22da858c805711ed3b0') in 0.004142 seconds 
-  Import took 0.009155 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000282 seconds.
-  path: Assets/Prefabs/Final Hazards/Hazard_Cold_Pipe.prefab
-  artifactKey: Guid(6ea78ca00b8ffa147911d29169359a8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Final Hazards/Hazard_Cold_Pipe.prefab using Guid(6ea78ca00b8ffa147911d29169359a8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '36cae2efb3efad46643d396346bb4fdd') in 0.016347 seconds 
-  Import took 0.021723 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000281 seconds.
-  path: Assets/Prefabs/Player.prefab
-  artifactKey: Guid(2566547bce01e854aaa0d41e91bd4c71) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Player.prefab using Guid(2566547bce01e854aaa0d41e91bd4c71) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a55c79706a789a8e46ca6b89cab8a03d') in 0.015711 seconds 
-  Import took 0.021141 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000260 seconds.
-  path: Assets/Prefabs/Final Hazards/Hazard_Cracked_Platform.prefab
-  artifactKey: Guid(e10c9f2d5fb014045bd69e7aa71b9c10) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Final Hazards/Hazard_Cracked_Platform.prefab using Guid(e10c9f2d5fb014045bd69e7aa71b9c10) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b30db1d7277fff6c0e0f1c1a40486479') in 0.021200 seconds 
-  Import took 0.026516 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000200 seconds.
-  path: Assets/Prefabs/Final Hazards/Hazard_Fan.prefab
-  artifactKey: Guid(8e557c72ba6df7f478138024daf15834) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Final Hazards/Hazard_Fan.prefab using Guid(8e557c72ba6df7f478138024daf15834) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a38a99067359e6972e039c59bbda9e34') in 0.022210 seconds 
-  Import took 0.028154 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000243 seconds.
-  path: Assets/Prefabs/Final Hazards
-  artifactKey: Guid(0f7d90c0055aabf45857298d28c01f6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Final Hazards using Guid(0f7d90c0055aabf45857298d28c01f6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f9340bb02835f04233a56e17f2771f30') in 0.005473 seconds 
-  Import took 0.010506 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 47.257037 seconds.
-  path: Assets/Prefabs/Final Hazards/Hazard_Cold_Pipe.prefab
-  artifactKey: Guid(6ea78ca00b8ffa147911d29169359a8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Final Hazards/Hazard_Cold_Pipe.prefab using Guid(6ea78ca00b8ffa147911d29169359a8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5be9476d3e1d0ed397712d0b504eb8cf') in 0.013611 seconds 
-  Import took 0.019328 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 13.157641 seconds.
-  path: Assets/Prefabs/Final Hazards/Hazard_Trapdoor.prefab
-  artifactKey: Guid(2a4c7e9d690640f4694aea4381339b7f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Final Hazards/Hazard_Trapdoor.prefab using Guid(2a4c7e9d690640f4694aea4381339b7f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8a227b2d25e7b4437261e1be1fdfe0fb') in 0.022769 seconds 
-  Import took 0.028683 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.003162 seconds.
-  path: Assets/Prefabs/Final Hazards/Hazard_Trapdoor.prefab
-  artifactKey: Guid(2a4c7e9d690640f4694aea4381339b7f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Final Hazards/Hazard_Trapdoor.prefab using Guid(2a4c7e9d690640f4694aea4381339b7f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8a227b2d25e7b4437261e1be1fdfe0fb') in 0.023105 seconds 
-  Import took 0.029410 seconds .
-
-AssetImportWorkerClient::OnTransportError - code=2 error=End of file
+Registered in 1.544833 seconds.
