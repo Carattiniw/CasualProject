@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 6631060119181231599}
   - component: {fileID: 6631060119181231598}
   - component: {fileID: 6631060119181231597}
+  - component: {fileID: 6744925176607809622}
   m_Layer: 0
   m_Name: Hazard_Fan
   m_TagString: Untagged
@@ -193,6 +194,25 @@ MonoBehaviour:
   maxDistance: 0
   distForce: 0
   fanZone: {fileID: 0}
+--- !u!95 &6744925176607809622
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4355688753340055571}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9a9956b8634807d4a9313aebbdffa868, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4808370418901987670
 GameObject:
   m_ObjectHideFlags: 0
