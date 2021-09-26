@@ -58,6 +58,13 @@ public class PlayerController : MonoBehaviour
             //Track current state;
             currentStateString = states[currentStateIndex];
 
+            if (currentStateString == "Liquid" || currentStateString == "Gas")
+            {
+                gameObject.layer = 7;
+            }
+            else
+                gameObject.layer = 6;
+
             /*Cycle forward one state, looping back to solid from gas*/
             if (Input.GetButtonUp("Jump") || Input.GetButtonUp("Fire1"))
             {
@@ -144,11 +151,13 @@ public class PlayerController : MonoBehaviour
 
         rb.useGravity = true;
         speed = 45f;
-        rb.mass = 0f;
+        rb.mass = 1f;
 
         if (isGrounded == false && isMagnetized == false)
         {
-            rb.velocity = new Vector3(0, -25, 0);
+            rb.drag = 0f;
+            rb.angularDrag = 0f;
+            rb.AddForce(0, -1f, 0, ForceMode.Impulse);
         }
         else
         {

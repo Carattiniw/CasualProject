@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 718074545826434388}
   m_Layer: 0
   m_Name: Building_Platform_Square
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

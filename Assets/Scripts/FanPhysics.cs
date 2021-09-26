@@ -8,26 +8,31 @@ public class FanPhysics : MonoBehaviour
     public Rigidbody rb;
     public string playerCurrentState;
 
-    public GameObject fan;
     public float fanForce;
+    public float maxDistance;
+    public float distForce;
     public Collider fanZone;
     void Start()
     {
         player = GameObject.Find("Player");
         rb = player.GetComponentInChildren<Rigidbody>();
-        fan= gameObject;
-       fanZone = gameObject.GetComponent<CapsuleCollider>();
+        fanZone = gameObject.GetComponent<CapsuleCollider>();
+        maxDistance = this.GetComponent<CapsuleCollider>().height;
     }
 
     private void Update()
     {
         playerCurrentState = player.GetComponentInChildren<PlayerController>().currentStateString;
+        distForce = maxDistance - Vector3.Distance(transform.position, player.transform.position);
     }
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject == player && (playerCurrentState == "Liquid" || playerCurrentState == "Gas"))
+        if (distForce > 0)
         {
-            rb.AddForce(new Vector3(0f, 0f, fanForce), ForceMode.Impulse);
+            if (other.gameObject == player && (playerCurrentState == "Liquid" || playerCurrentState == "Gas"))
+            {
+                rb.AddForce(transform.up * fanForce * distForce, ForceMode.Force);
+            }
         }
     }
 }
