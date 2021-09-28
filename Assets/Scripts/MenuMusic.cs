@@ -12,7 +12,19 @@ public class MenuMusic : MonoBehaviour
 
     void Awake()
     {
-        playMusic();
+        //playMusic();
+
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+        else
+        {
+            instance = this;
+        }
+
+        DontDestroyOnLoad(this.gameObject);
     }
 
     void Update()
