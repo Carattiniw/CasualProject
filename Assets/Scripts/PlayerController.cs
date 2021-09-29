@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Audio;
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,6 +21,12 @@ public class PlayerController : MonoBehaviour
     public bool isGrounded;
     public bool isMagnetized;
 
+    private AudioSource audioSource;
+    public AudioClip solidAudio;
+    public AudioClip liquidAudio;
+    private bool playedliquid = false;
+    private bool playedSolid = false;
+
     [Header("State of Matter")]
     //States: 0 = Solid, 1 = Liquid, 2 = Gas | ARRAY FIRST INDEX IS 0 NOT 1
     [HideInInspector]public string[] states = { "Solid", "Liquid", "Gas" };
@@ -30,6 +37,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         animator = FindObjectOfType<Animator>();
         //controller = GetComponent<CharacterController>();
         rb = GetComponent<Rigidbody>();
@@ -167,6 +175,18 @@ public class PlayerController : MonoBehaviour
 
             Vector3 move = transform.forward * x * speed;
             rb.AddForce(move, ForceMode.Acceleration);
+
+            if (playedSolid == false && x > 0)
+            {
+                playedSolid = true;
+                StartCoroutine(PlaySolidSound());
+            }
+
+            if (playedSolid == false && x < 0)
+            {
+                playedSolid = true;
+                StartCoroutine(PlaySolidSound());
+            }
         }
     }
     private void LiquidMovement()
@@ -187,6 +207,18 @@ public class PlayerController : MonoBehaviour
 
         Vector3 move = transform.forward * x * speed;
         rb.AddForce(move, ForceMode.Acceleration);
+        
+        if (playedliquid == false && x > 0)
+        {
+            playedliquid = true;
+            StartCoroutine(PlayLiquidSound());
+        }
+
+        if (playedliquid == false && x < 0)
+        {
+            playedliquid = true;
+            StartCoroutine(PlayLiquidSound());
+        }
     }
         private void GasMovement()
     {//Gas State Movement
@@ -203,5 +235,19 @@ public class PlayerController : MonoBehaviour
 
         Vector3 move = transform.forward * x  * speed + transform.up * y * speed;
         rb.AddForce(move, ForceMode.Acceleration);
+    }
+
+    IEnumerator PlayLiquidSound()
+    {
+        audioSource.PlayOneShot(liquidAudio, 1.0F);
+        yield return new WaitForSeconds(1);
+        playedliquid = false;
+    }
+
+    IEnumerator PlaySolidSound()
+    {
+        audioSource.PlayOneShot(solidAudio, 1.0F);
+        yield return new WaitForSeconds(1);
+        playedSolid = false;
     }
 }

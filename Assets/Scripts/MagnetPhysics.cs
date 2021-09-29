@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class MagnetPhysics : MonoBehaviour
 {
@@ -13,12 +14,18 @@ public class MagnetPhysics : MonoBehaviour
     public Vector3 magnetism;
     public float magnetForce;
     public Collider magnetZone;
+
+    private AudioSource audioSource;
+    public AudioClip magnetTrapAudio;
+    private bool audioPlayed = false;
+
     void Start()
     {
         player = GameObject.Find("Player");
         controller = player.GetComponent<PlayerController>();
         rb = player.GetComponent<Rigidbody>();
         magnetZone = gameObject.GetComponent<SphereCollider>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -40,10 +47,17 @@ public class MagnetPhysics : MonoBehaviour
         {
             controller.isMagnetized = true;
             //rb.AddForce(magnetism, ForceMode.VelocityChange);
+
+            if (controller.isMagnetized == true && audioPlayed == false)
+            {
+                audioSource.PlayOneShot(magnetTrapAudio, 1.0F);
+                audioPlayed = true;
+            }
         }
         else
         {
             controller.isMagnetized = false;
+            audioPlayed = false;
         }
     }
 }

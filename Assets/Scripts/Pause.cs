@@ -18,6 +18,7 @@ public class Pause : MonoBehaviour
     private GameObject StoreSelected;
     private bool viewedControls;
     private StopMenuMusic StopMenuMusic;
+    private StopGameMusic StopGameMusic;
 
 
     void Start()
@@ -25,10 +26,16 @@ public class Pause : MonoBehaviour
         StoreSelected = ES.firstSelectedGameObject;
         unpauseGame(); //prevents level from being frozen if player begins game after exiting to main menu
 
-        GameObject StopMenuMusicObject = GameObject.FindWithTag("GameController"); //finds the DestroyObject script
+        GameObject StopMenuMusicObject = GameObject.FindWithTag("GameController");
         if (StopMenuMusicObject != null)
         {
             StopMenuMusic = StopMenuMusicObject.GetComponent<StopMenuMusic>();
+        }
+
+        GameObject StopGameMusicObject = GameObject.FindWithTag("Game Music");
+        if (StopGameMusicObject != null)
+        {
+            StopGameMusic = StopGameMusicObject.GetComponent<StopGameMusic>();
         }
     }
 
@@ -80,6 +87,8 @@ public class Pause : MonoBehaviour
     {
         //pauseScreen.SetActive(false); test to get rid of dark main menu after play
         StopMenuMusic.resumeMenuMusic();
+        GameMusic.Instance.gameObject.GetComponent<AudioSource>().Stop();
+        //StopGameMusic.resumeGameMusic();
         SceneManager.LoadScene(backToMainMenu);
     }
 
