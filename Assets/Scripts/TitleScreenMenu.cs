@@ -15,6 +15,7 @@ public class TitleScreenMenu : MonoBehaviour
 
     void Start()
     {
+        ES = FindObjectOfType<EventSystem>();
         StoreSelected = ES.firstSelectedGameObject;
     }
 

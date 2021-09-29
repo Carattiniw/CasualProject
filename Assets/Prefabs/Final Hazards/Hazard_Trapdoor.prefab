@@ -729,6 +729,7 @@ GameObject:
   - component: {fileID: 4180894622195756058}
   - component: {fileID: 4435831214799114104}
   - component: {fileID: 7972412099640985647}
+  - component: {fileID: 5297044831918615489}
   m_Layer: 0
   m_Name: Hazard_Trapdoor
   m_TagString: Untagged
@@ -800,6 +801,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5297044831918615489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3552870809781532320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bcf84c5e90114d448a510a66834d622, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openTrapDoorSound: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!1 &3639914484583250791
 GameObject:
   m_ObjectHideFlags: 0
@@ -2101,6 +2116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openTrapDoorSound: {fileID: 8300000, guid: 0008fea1e0a81564c80d17d78132dde6, type: 3}
+  animator: {fileID: 0}
 --- !u!82 &8281023085648833520
 AudioSource:
   m_ObjectHideFlags: 0

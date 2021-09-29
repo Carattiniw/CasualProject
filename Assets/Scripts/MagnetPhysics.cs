@@ -30,7 +30,7 @@ public class MagnetPhysics : MonoBehaviour
 
     private void Update()
     {
-        playerCurrentState = player.GetComponentInChildren<PlayerController>().currentStateString;
+        playerCurrentState = controller.currentStateString;
         magnetism = (transform.position - player.transform.position) * magnetForce * Time.deltaTime;
     }
 

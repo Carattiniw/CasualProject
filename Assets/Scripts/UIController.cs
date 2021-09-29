@@ -21,13 +21,13 @@ public class UIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<PlayerController>();
         animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        player = FindObjectOfType<PlayerController>();
         /*Pause and Main Menu check*/
         if (GameManager.Instance.pause == false)
         {

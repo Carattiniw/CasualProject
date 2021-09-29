@@ -10,14 +10,14 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Solid
   - Water
   - UI
-  - Solid
-  - LiquidGas
-  - CracksPipes
-  - 
-  - 
+  - Liquid
+  - Gas
+  - AllowsLiquid
+  - AllowsGas
+  - AllowsLiquidGasd
   - 
   - 
   - 

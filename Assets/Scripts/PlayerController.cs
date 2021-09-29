@@ -39,7 +39,6 @@ public class PlayerController : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         animator = FindObjectOfType<Animator>();
-        //controller = GetComponent<CharacterController>();
         rb = GetComponent<Rigidbody>();
 
         if (tutorialSolidOnly == true)
@@ -137,7 +136,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionStay(Collision collision)
     {
         //only works if player is touching the ground and is in solid state
         if (collision.collider.tag == "Floor")
