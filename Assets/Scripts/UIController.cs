@@ -5,13 +5,6 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
-    [SerializeField]
-    private Image imgGas;
-    [SerializeField]
-    private Image imgSolid;
-    [SerializeField]
-    private Image imgLiquid;
-
     public Animator animator;
     public AnimatorStateInfo animatorState;
 
@@ -31,21 +24,11 @@ public class UIController : MonoBehaviour
         /*Pause and Main Menu check*/
         if (GameManager.Instance.pause == false)
         {
-            
+            animator.SetInteger("CurrentState", player.currentStateIndex);
         }
     }
-
-    public void EnableStateIcons()
+    public void SetTrigger()
     {
-        imgSolid.enabled = true;
-        imgLiquid.enabled = true;
-        imgGas.enabled = true;
-    }
-
-    public void DisableStateIcons()
-    {
-        imgSolid.enabled = false;
-        imgLiquid.enabled = false;
-        imgGas.enabled = false;
-    }
+        //animator.SetTrigger("Transitioning")
+    }    
 }

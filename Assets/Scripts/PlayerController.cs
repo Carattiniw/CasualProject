@@ -36,12 +36,13 @@ public class PlayerController : MonoBehaviour
     {
         animate = GetComponentInChildren<ShiftyAnimation>();
         audioSource = GetComponent<AudioSource>();
-        animator = FindObjectOfType<Animator>();
         rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
     {
+        animator = GameObject.Find("GameUI").GetComponentInChildren<Animator>();
+
         /*Pause and Main Menu check*/
         if (GameManager.Instance.pause == false)
         {
@@ -133,12 +134,12 @@ public class PlayerController : MonoBehaviour
                 {
                     if (currentStateIndex == 2)
                     {
-                        animator.SetTrigger("stateChange");
+                        animator.SetTrigger("Transitioning");
                         currentStateIndex = 0;
                     }
                     else
                     {
-                        animator.SetTrigger("stateChange");
+                        animator.SetTrigger("Transitioning");
                         currentStateIndex += 1;
                     }
                 }
@@ -149,12 +150,12 @@ public class PlayerController : MonoBehaviour
                     if (currentStateIndex == 0)
                     {
                         isTransitioning = true;
-                        animator.SetTrigger("stateChange");
+                        animator.SetTrigger("Transitioning");
                         currentStateIndex = 2;
                     }
                     else
                     {
-                        animator.SetTrigger("stateChange");
+                        animator.SetTrigger("Transitioning");
                         currentStateIndex -= 1;
                     }
                 }
