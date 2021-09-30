@@ -13924,6 +13924,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3559994369982251176, guid: b2ea902291d1aa94f99d9a405c598fac, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3559994371035248982, guid: b2ea902291d1aa94f99d9a405c598fac, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -14011,6 +14015,24 @@ PrefabInstance:
     - target: {fileID: 3559994371035248988, guid: b2ea902291d1aa94f99d9a405c598fac, type: 3}
       propertyPath: m_Name
       value: GameUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3559994371726126141, guid: b2ea902291d1aa94f99d9a405c598fac, type: 3}
+      propertyPath: m_text
+      value: 'Test failed!
+
+        Try again?'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3559994371726126141, guid: b2ea902291d1aa94f99d9a405c598fac, type: 3}
+      propertyPath: m_fontSize
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 3559994371726126142, guid: b2ea902291d1aa94f99d9a405c598fac, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 3559994371726126142, guid: b2ea902291d1aa94f99d9a405c598fac, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 5326353254291035975, guid: b2ea902291d1aa94f99d9a405c598fac, type: 3}
       propertyPath: m_Volume
