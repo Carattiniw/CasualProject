@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        animator = GameObject.Find("GameUI").GetComponentInChildren<Animator>();
+        //animator = GameObject.Find("GameUI").GetComponent<Animator>();
 
         /*Pause and Main Menu check*/
         if (GameManager.Instance.pause == false)

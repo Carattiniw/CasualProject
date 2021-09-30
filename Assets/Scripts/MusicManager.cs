@@ -24,7 +24,7 @@ public class MusicManager : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(SceneManager.GetActiveScene().name);
+        //Debug.Log(SceneManager.GetActiveScene().name);
         if (SceneManager.GetActiveScene().name == "MainMenu" || SceneManager.GetActiveScene().name == "Controls" || SceneManager.GetActiveScene().name == "Credits")
         {
             if (audioSource.clip != menu)
