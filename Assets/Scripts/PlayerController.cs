@@ -7,13 +7,9 @@ using UnityEngine.Audio;
 
 public class PlayerController : MonoBehaviour
 {
-   // public CharacterController controller;
+    public ShiftyAnimation animate;
     public float speed;
     public float verticalInput;
-   
-    public bool tutorialSolidOnly;
-    public bool tutorialGasOnly;
-    public bool tutorialLiquidOnly;
 
     private Rigidbody rb;
 
@@ -37,24 +33,10 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        animate = GetComponentInChildren<ShiftyAnimation>();
         audioSource = GetComponent<AudioSource>();
         animator = FindObjectOfType<Animator>();
         rb = GetComponent<Rigidbody>();
-
-        if (tutorialSolidOnly == true)
-        {
-            currentStateIndex = 0;
-        }
-
-        if (tutorialLiquidOnly == true)
-        {
-            currentStateIndex = 1;
-        }
-
-        if (tutorialGasOnly == true)
-        {
-            currentStateIndex = 2;
-        }
     }
 
     private void Update()
@@ -65,22 +47,30 @@ public class PlayerController : MonoBehaviour
             //Track current state;
             currentStateString = states[currentStateIndex];
 
-            if (currentStateString == "Liquid" || currentStateString == "Gas")
+            if (currentStateString == "Solid")
+            {
+                gameObject.layer = 3;
+                if(isGrounded == true && rb.velocity.z == 0)
+                {
+                    animate.ChangeAnimationState(ShiftyAnimation.solidIdle);
+                }
+                else if(isGrounded == true && rb.velocity.z != 0)
+                {
+                    animate.ChangeAnimationState(ShiftyAnimation.solidMoving);
+                }
+            }
+            else if (currentStateString == "Liquid")
+            {
+                gameObject.layer = 6;
+            }
+            else if (currentStateString == "Gas")
             {
                 gameObject.layer = 7;
             }
-            else
-                gameObject.layer = 6;
 
             /*Cycle forward one state, looping back to solid from gas*/
             if (Input.GetButtonUp("Jump") || Input.GetButtonUp("Fire1"))
             {
-                if (tutorialSolidOnly == true || tutorialLiquidOnly == true || tutorialGasOnly == true)
-                {
-                    return;
-                }
-                else
-                {
                     if (currentStateIndex == 2)
                     {
                         animator.SetTrigger("stateChange");
@@ -91,18 +81,11 @@ public class PlayerController : MonoBehaviour
                         animator.SetTrigger("stateChange");
                         currentStateIndex += 1;
                     }
-                }
             }
 
             /*Cycle backward one state, looping back to gas from solid*/
             if (Input.GetButtonUp("Fire2"))
-            {
-                if (tutorialSolidOnly == true || tutorialLiquidOnly == true || tutorialGasOnly == true)
-                {
-                    return;
-                }
-                else
-                {
+            {                
                     if (currentStateIndex == 0)
                     {
                         animator.SetTrigger("stateChange");
@@ -113,7 +96,6 @@ public class PlayerController : MonoBehaviour
                         animator.SetTrigger("stateChange");
                         currentStateIndex -= 1;
                     }
-                }
             }
         }
     }

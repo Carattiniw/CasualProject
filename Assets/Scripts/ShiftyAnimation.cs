@@ -4,71 +4,55 @@ using UnityEngine;
 
 public class ShiftyAnimation : MonoBehaviour
 {
-    public ShiftyAnimation Instance { get; private set; }
-    GameObject shifty;
-    SkinnedMeshRenderer mesh;
-    public int currentIndex =10;
-    public int lastIndex;
-    public float currentWeight = 0f;
-    public bool weightBool = true;
+    [SerializeField]private Animator animator;
+    [SerializeField]private string currentAnimState;
 
-    void Awake()
+    public const string solidIdle = "Solid_Idle";
+    public const string solidMoving = "Solid_Running";
+    public const string solidBreakingBackToIdle = "Solid_Breaking_BackTo_Idle";
+    public const string solidBreaking = "Solid_Breaking";
+    public const string solidRunning = "Solid_Running";
+    public const string solidIdleToRunningTransition = "SolidIdle_to_SolidRunning_Transition";
+    public const string solidToLiquid = "Solid_To_Liquid";
+    public const string solidToGas = "Solid_To_Gas";
+
+    public const string liquidFalling = "Liquid_Falling";
+    public const string liquidIdle = "Liquid_Idle";
+    public const string liquidPipeSliding = "Liquid_Pipe_Sliding";
+    public const string liquidPipeSlidingFromIdle = "Liquid_Pipe_Sliding_From_Idle";
+    public const string liquidPipeSlidingToIdle = "Liquid_Pipe_Sliding_to_Idle";
+    public const string liquidRunning = "Liquid_Running";
+    public const string liquidSeepToLanding = "Liquid_Seep_to_Landing";
+    public const string liquidSeepToLandingTransition = "Liquid_Seep_to_Landing_Transition";
+    public const string liquidThroughCracks = "Liquid_Through_Cracks";
+    public const string liquidToGas = "Liquid_to_Gas";
+    public const string liquidToSolid = "Liquid_to_Solid";
+    public const string liquidIdleToLiquidRunning = "Liquid_Idle_to_Liquid_Running";
+
+    public const string gasIdle = "Gas_Idle";
+    public const string gasPushPull = "Gas_Push_Pull";
+    public const string gasPushPullFreezeFrame = "Gas_Push_Pull_FreezeFrame";
+    public const string gasSeepingCracks = "Gas_Seeping_Cracks";
+    public const string gasToLiquid = "Gas_to_Liquid";
+    public const string gasToSolid = "Gas_to_Solid";
+
+
+    private void Start()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            mesh = GetComponent<SkinnedMeshRenderer>();
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        animator = GetComponent<Animator>();
     }
 
-    /*private void Update()
+    public void Update()
     {
-        shifty = GameObject.Find("Player");
-        mesh = shifty.GetComponent<SkinnedMeshRenderer>();
-        switch(weightBool)
-        { 
-            case true:
-                currentWeight += Time.deltaTime;
-                break;
-            case false:
-                currentWeight -= Time.deltaTime;
-                break;
-        }
-        Mathf.Clamp(currentWeight, 0f, 100f);     
-        if(currentWeight == 0f)
-        {
-            weightBool = !weightBool;
-        }
-        mesh.SetBlendShapeWeight(currentIndex, currentWeight);
-
-        currentWeight = Mathf.PingPong(0, 100);
-    }*/
-
-    private void Update()
-    {
-        mesh.SetBlendShapeWeight(lastIndex, 0f);
-        mesh.SetBlendShapeWeight(currentIndex, 100f);
-        if (currentIndex > 6)
-        {
-            lastIndex = currentIndex;
-            currentIndex--;
-        }
-        else if (currentIndex == 6)
-        {
-            lastIndex = 6;
-            currentIndex = 10;
-        }
+        ChangeAnimationState(solidIdle);
     }
-    public void SetAnimation(int targetIndex)
+    public void ChangeAnimationState(string newState)
     {
-        weightBool = !weightBool;
-       
-        mesh.SetBlendShapeWeight(targetIndex, currentWeight);
+        if (currentAnimState == newState) return;
+
+        animator.Play(newState);
+
+        currentAnimState = newState;
     }
 }
 
