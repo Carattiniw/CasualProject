@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
 
     public Vector3 jumpForce;
     public bool isMagnetized;
-    public bool isTransitioning;
+    public bool isTraversing;
     
     public bool isGrounded;
     public SphereCollider groundCheck;
@@ -47,89 +47,92 @@ public class PlayerController : MonoBehaviour
         {
             //Track current state;
             currentStateString = states[currentStateIndex];
-            if (Input.GetAxis("Horizontal") > 0)
+            if (isTraversing == false)
             {
-                gameObject.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
-            }
-            else if (Input.GetAxis("Horizontal") < 0)
-            {
-                gameObject.transform.localScale = new Vector3(2.5f, 2.5f, -2.5f);
-            }
-
-            if (currentStateString == "Solid")
-            {
-                gameObject.layer = 3;
-                if (isGrounded == true && Input.GetAxis("Horizontal") == 0)
+                if (Input.GetAxis("Horizontal") > 0)
                 {
-                    if (rb.velocity.z > -0.1f && rb.velocity.z < 0.1f)
+                    gameObject.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
+                }
+                else if (Input.GetAxis("Horizontal") < 0)
+                {
+                    gameObject.transform.localScale = new Vector3(2.5f, 2.5f, -2.5f);
+                }
+
+                if (currentStateString == "Solid")
+                {
+                    gameObject.layer = 3;
+                    if (isGrounded == true && Input.GetAxis("Horizontal") == 0)
                     {
-                        animate.ChangeAnimationState(ShiftyAnimation.solidIdle);
+                        if (rb.velocity.z > -0.1f && rb.velocity.z < 0.1f)
+                        {
+                            animate.ChangeAnimationState(ShiftyAnimation.solidIdle);
+                        }
+                        else if (rb.velocity.z <= -0.1f || rb.velocity.z >= 0.1f)
+                        {
+                            animate.ChangeAnimationState(ShiftyAnimation.solidRunning);
+                        }
                     }
-                    else if (rb.velocity.z <= -0.1f || rb.velocity.z >= 0.1f)
+                    else if (isGrounded == true && Input.GetAxis("Horizontal") != 0)
                     {
                         animate.ChangeAnimationState(ShiftyAnimation.solidRunning);
                     }
-                }
-                else if (isGrounded == true && Input.GetAxis("Horizontal") != 0)
-                {
-                    animate.ChangeAnimationState(ShiftyAnimation.solidRunning);
-                }
-                else if (isGrounded == false && rb.velocity.y < 0f)
-                {
-                    animate.ChangeAnimationState(ShiftyAnimation.solidBreaking);
-                }
-            }
-            else if (currentStateString == "Liquid")
-            {
-                gameObject.layer = 6;
-                if (isGrounded == true && Input.GetAxis("Horizontal") == 0)
-                {
-                    if (rb.velocity.z > -0.1f && rb.velocity.z < 0.1f)
+                    else if (isGrounded == false && rb.velocity.y < 0f)
                     {
-                        animate.ChangeAnimationState(ShiftyAnimation.liquidIdle);
-                    }
-                    else if (rb.velocity.z <= -0.1f || rb.velocity.z >= 0.1f)
-                    {
-                        animate.ChangeAnimationState(ShiftyAnimation.liquidRunning);
+                        animate.ChangeAnimationState(ShiftyAnimation.solidBreaking);
                     }
                 }
-                else if (isGrounded == true && Input.GetAxis("Horizontal") != 0)
+                else if (currentStateString == "Liquid")
                 {
-                    if (rb.velocity.z > -0.1f && rb.velocity.z < 0.1f)
+                    gameObject.layer = 6;
+                    if (isGrounded == true && Input.GetAxis("Horizontal") == 0)
                     {
-                        animate.ChangeAnimationState(ShiftyAnimation.liquidIdleToLiquidRunning);
+                        if (rb.velocity.z > -0.1f && rb.velocity.z < 0.1f)
+                        {
+                            animate.ChangeAnimationState(ShiftyAnimation.liquidIdle);
+                        }
+                        else if (rb.velocity.z <= -0.1f || rb.velocity.z >= 0.1f)
+                        {
+                            animate.ChangeAnimationState(ShiftyAnimation.liquidRunning);
+                        }
                     }
-                    else
+                    else if (isGrounded == true && Input.GetAxis("Horizontal") != 0)
                     {
-                        animate.ChangeAnimationState(ShiftyAnimation.liquidRunning);
+                        if (rb.velocity.z > -0.1f && rb.velocity.z < 0.1f)
+                        {
+                            animate.ChangeAnimationState(ShiftyAnimation.liquidIdleToLiquidRunning);
+                        }
+                        else
+                        {
+                            animate.ChangeAnimationState(ShiftyAnimation.liquidRunning);
+                        }
+                    }
+                    else if (isGrounded == false && rb.velocity.y < 0f)
+                    {
+                        animate.ChangeAnimationState(ShiftyAnimation.liquidFalling);
                     }
                 }
-                else if (isGrounded == false && rb.velocity.y < 0f)
+                else if (currentStateString == "Gas")
                 {
-                    animate.ChangeAnimationState(ShiftyAnimation.liquidFalling);
-                }
-            }
-            else if (currentStateString == "Gas")
-            {
-                gameObject.layer = 7;
-                if (Input.GetAxis("Horizontal") == 0)
-                {
-                    if (rb.velocity.z > -0.1f && rb.velocity.z < 0.1f)
+                    gameObject.layer = 7;
+                    if (Input.GetAxis("Horizontal") == 0)
                     {
-                        animate.ChangeAnimationState(ShiftyAnimation.gasIdle);
+                        if (rb.velocity.z > -0.1f && rb.velocity.z < 0.1f)
+                        {
+                            animate.ChangeAnimationState(ShiftyAnimation.gasIdle);
+                        }
+                        else if (rb.velocity.z <= -0.1f || rb.velocity.z >= 0.1f)
+                        {
+                            animate.ChangeAnimationState(ShiftyAnimation.gasPushPull);
+                        }
                     }
-                    else if (rb.velocity.z <= -0.1f || rb.velocity.z >= 0.1f)
+                    else if (Input.GetAxis("Horizontal") != 0)
                     {
                         animate.ChangeAnimationState(ShiftyAnimation.gasPushPull);
                     }
                 }
-                else if (Input.GetAxis("Horizontal") != 0)
-                {
-                    animate.ChangeAnimationState(ShiftyAnimation.gasPushPull);
-                }
             }
                 /*Cycle forward one state, looping back to solid from gas*/
-                if (Input.GetButtonUp("Fire1"))
+                if (Input.GetButtonUp("Fire1") && isTraversing == false)
                 {
                     if (currentStateIndex == 2)
                     {
@@ -142,7 +145,7 @@ public class PlayerController : MonoBehaviour
                 }
 
                 /*Cycle backward one state, looping back to gas from solid*/
-                if (Input.GetButtonUp("Fire2"))
+                if (Input.GetButtonUp("Fire2") && isTraversing == false)
                 {
                     if (currentStateIndex == 0)
                     {

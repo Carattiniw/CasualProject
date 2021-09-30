@@ -52,9 +52,10 @@ MonoBehaviour:
   speed: 5
   verticalInput: 0
   jumpForce: {x: 0, y: 100, z: 0}
-  isGrounded: 0
   isMagnetized: 0
   isTransitioning: 0
+  isGrounded: 0
+  groundCheck: {fileID: 0}
   solidAudio: {fileID: 8300000, guid: d23e781fc219f8d4f94bb54ad6261355, type: 3}
   liquidAudio: {fileID: 8300000, guid: d45840c02ff2bce4ab94ed55f0174bea, type: 3}
   states:
@@ -109,7 +110,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 783868990864210779}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.14

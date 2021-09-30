@@ -38,7 +38,10 @@ public class UIController : MonoBehaviour
 
                 if (Input.GetButtonUp("Fire1") || Input.GetButtonUp("Fire2"))
                 {
-                    animator.SetTrigger("Transitioning");
+                    if (player.GetComponent<PlayerController>().isTraversing == false)
+                    {
+                        animator.SetTrigger("Transitioning");
+                    }
                 }
             }
         }
