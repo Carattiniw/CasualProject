@@ -62,7 +62,6 @@ MonoBehaviour:
   - Gas
   currentStateIndex: 0
   currentStateString: 
-  animator: {fileID: 0}
 --- !u!54 &783868990864210777
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -110,7 +109,7 @@ MeshCollider:
   m_GameObject: {fileID: 7103627096714745058}
   m_Material: {fileID: 13400000, guid: 799507d45059e68458d22fcfb04a1570, type: 2}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
