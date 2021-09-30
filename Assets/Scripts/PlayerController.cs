@@ -30,8 +30,6 @@ public class PlayerController : MonoBehaviour
     public int currentStateIndex = 0;
     public string currentStateString;
 
-    public Animator animator;
-
     private void Awake()
     {
         animate = GetComponentInChildren<ShiftyAnimation>();
@@ -41,8 +39,6 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        //animator = GameObject.Find("GameUI").GetComponent<Animator>();
-
         /*Pause and Main Menu check*/
         if (GameManager.Instance.pause == false)
         {
@@ -134,12 +130,10 @@ public class PlayerController : MonoBehaviour
                 {
                     if (currentStateIndex == 2)
                     {
-                        animator.SetTrigger("Transitioning");
                         currentStateIndex = 0;
                     }
                     else
                     {
-                        animator.SetTrigger("Transitioning");
                         currentStateIndex += 1;
                     }
                 }
@@ -150,12 +144,10 @@ public class PlayerController : MonoBehaviour
                     if (currentStateIndex == 0)
                     {
                         isTransitioning = true;
-                        animator.SetTrigger("Transitioning");
                         currentStateIndex = 2;
                     }
                     else
                     {
-                        animator.SetTrigger("Transitioning");
                         currentStateIndex -= 1;
                     }
                 }
@@ -179,6 +171,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
     void OnCollisionStay(Collision collision)
     {
         //only works if player is touching the ground and is in solid state
