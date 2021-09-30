@@ -8,7 +8,6 @@ public class ShiftyAnimation : MonoBehaviour
     [SerializeField]private string currentAnimState;
 
     public const string solidIdle = "Solid_Idle";
-    public const string solidMoving = "Solid_Running";
     public const string solidBreakingBackToIdle = "Solid_Breaking_BackTo_Idle";
     public const string solidBreaking = "Solid_Breaking";
     public const string solidRunning = "Solid_Running";
@@ -42,17 +41,18 @@ public class ShiftyAnimation : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    public void Update()
-    {
-        ChangeAnimationState(solidIdle);
-    }
     public void ChangeAnimationState(string newState)
     {
-        if (currentAnimState == newState) return;
-
-        animator.Play(newState);
-
-        currentAnimState = newState;
+        if (currentAnimState == newState)
+        {
+            return;
+        }
+        else
+        {
+            currentAnimState = newState;
+            animator.Play(newState);
+            
+        }
     }
 }
 
