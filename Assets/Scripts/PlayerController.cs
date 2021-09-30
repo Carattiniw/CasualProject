@@ -201,13 +201,13 @@ public class PlayerController : MonoBehaviour
             if (playedSolid == false && x > 0)
             {
                 playedSolid = true;
-                //StartCoroutine(PlaySolidSound());
+                StartCoroutine(PlaySolidSound());
             }
 
             if (playedSolid == false && x < 0)
             {
                 playedSolid = true;
-                //StartCoroutine(PlaySolidSound());
+                StartCoroutine(PlaySolidSound());
             }
         }
     }
@@ -233,13 +233,13 @@ public class PlayerController : MonoBehaviour
         if (playedliquid == false && x > 0)
         {
             playedliquid = true;
-            //StartCoroutine(PlayLiquidSound());
+            StartCoroutine(PlayLiquidSound());
         }
 
         if (playedliquid == false && x < 0)
         {
             playedliquid = true;
-            //StartCoroutine(PlayLiquidSound());
+            StartCoroutine(PlayLiquidSound());
         }
     }
     private void GasMovement()
