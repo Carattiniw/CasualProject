@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 783868990864210788}
   - component: {fileID: 783868990864210778}
   - component: {fileID: 783868990864210777}
+  - component: {fileID: 1607295703421872989}
+  - component: {fileID: 2473629057853283997}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -27,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 783868990864210779}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.71, y: 0, z: 4.53}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children:
   - {fileID: 7628807058237017688}
   m_Father: {fileID: 0}
@@ -52,8 +54,8 @@ MonoBehaviour:
   isGrounded: 0
   isMagnetized: 0
   isTransitioning: 0
-  solidAudio: {fileID: 0}
-  liquidAudio: {fileID: 0}
+  solidAudio: {fileID: 8300000, guid: d23e781fc219f8d4f94bb54ad6261355, type: 3}
+  liquidAudio: {fileID: 8300000, guid: d45840c02ff2bce4ab94ed55f0174bea, type: 3}
   states:
   - Solid
   - Liquid
@@ -77,13 +79,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 114
   m_CollisionDetection: 1
---- !u!64 &7950065986873895305
+--- !u!81 &1607295703421872989
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783868990864210779}
+  m_Enabled: 1
+--- !u!64 &2473629057853283997
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7103627096714745058}
+  m_GameObject: {fileID: 783868990864210779}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -137,15 +147,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0e3a1cbcf6da8146b7b97037c4e0716, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.64382094
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0e3a1cbcf6da8146b7b97037c4e0716, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.061245143
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0e3a1cbcf6da8146b7b97037c4e0716, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.08707057
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0e3a1cbcf6da8146b7b97037c4e0716, type: 3}
       propertyPath: m_LocalRotation.w
@@ -157,11 +167,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0e3a1cbcf6da8146b7b97037c4e0716, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0e3a1cbcf6da8146b7b97037c4e0716, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0e3a1cbcf6da8146b7b97037c4e0716, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -206,6 +216,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c0e3a1cbcf6da8146b7b97037c4e0716, type: 3}
       propertyPath: m_Name
       value: shifty
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c0e3a1cbcf6da8146b7b97037c4e0716, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0e3a1cbcf6da8146b7b97037c4e0716, type: 3}

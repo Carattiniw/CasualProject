@@ -21,6 +21,15 @@ public class TitleScreenMenu : MonoBehaviour
 
     void Update()
     {
+        if (SceneManager.GetActiveScene().name == "Controls" || SceneManager.GetActiveScene().name == "Credits")
+        {
+            StoreSelected = GameObject.Find("Back to Main Menu");
+        }
+        else if (SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            StoreSelected = GameObject.Find("Start");
+        }
+
         if (ES.currentSelectedGameObject != StoreSelected)
         {
             //this code stops a bug where if you accidentally click a mouse button on the pause menu while 

@@ -15,14 +15,14 @@ public class FanPhysics : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player");
-        rb = player.GetComponentInChildren<Rigidbody>();
+        rb = player.GetComponent<Rigidbody>();
         fanZone = gameObject.GetComponent<CapsuleCollider>();
         maxDistance = this.GetComponent<CapsuleCollider>().height;
     }
 
     private void Update()
     {
-        playerCurrentState = player.GetComponentInChildren<PlayerController>().currentStateString;
+        playerCurrentState = player.GetComponent<PlayerController>().currentStateString;
         distForce = maxDistance - Vector3.Distance(transform.position, player.transform.position);
     }
     private void OnTriggerStay(Collider other)

@@ -44,13 +44,17 @@ public class Pause : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Cancel"))
         {
-            if (GameManager.Instance.pause == true)
+            if (SceneManager.GetActiveScene().name != "MainMenu" && SceneManager.GetActiveScene().name != "Credits" && SceneManager.GetActiveScene().name != "Controls")
             {
-                unpauseGame();
-            }
-            else
-            {
-                pauseGame();
+
+                if (GameManager.Instance.pause == true)
+                {
+                    unpauseGame();
+                }
+                else
+                {
+                    pauseGame();
+                }
             }
         }
 

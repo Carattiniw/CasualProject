@@ -36,7 +36,7 @@ public class ShiftyAnimation : MonoBehaviour
     public const string gasToSolid = "Gas_to_Solid";
 
 
-    private void Start()
+    private void Update()
     {
         animator = GetComponent<Animator>();
     }

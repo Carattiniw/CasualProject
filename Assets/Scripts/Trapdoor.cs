@@ -19,7 +19,7 @@ public class Trapdoor : MonoBehaviour
         animator = GetComponentInParent<Animator>();
     }
 
-    private void OnCollisionEnter(Collision collisionInfo)
+    private void OnCollisionStay(Collision collisionInfo)
     {
         if(collisionInfo.gameObject.tag == "Player" && player.currentStateString == "Solid")
         {

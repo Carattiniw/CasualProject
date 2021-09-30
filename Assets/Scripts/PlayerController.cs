@@ -49,11 +49,11 @@ public class PlayerController : MonoBehaviour
             currentStateString = states[currentStateIndex];
             if (Input.GetAxis("Horizontal") > 0)
             {
-                gameObject.transform.localScale = new Vector3(5, 5, 5);
+                gameObject.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
             }
             else if (Input.GetAxis("Horizontal") < 0)
             {
-                gameObject.transform.localScale = new Vector3(5, 5, -5);
+                gameObject.transform.localScale = new Vector3(2.5f, 2.5f, -2.5f);
             }
 
             if (currentStateString == "Solid")
@@ -220,13 +220,13 @@ public class PlayerController : MonoBehaviour
             if (playedSolid == false && x > 0)
             {
                 playedSolid = true;
-                StartCoroutine(PlaySolidSound());
+                //StartCoroutine(PlaySolidSound());
             }
 
             if (playedSolid == false && x < 0)
             {
                 playedSolid = true;
-                StartCoroutine(PlaySolidSound());
+                //StartCoroutine(PlaySolidSound());
             }
         }
     }
@@ -252,13 +252,13 @@ public class PlayerController : MonoBehaviour
         if (playedliquid == false && x > 0)
         {
             playedliquid = true;
-            StartCoroutine(PlayLiquidSound());
+            //StartCoroutine(PlayLiquidSound());
         }
 
         if (playedliquid == false && x < 0)
         {
             playedliquid = true;
-            StartCoroutine(PlayLiquidSound());
+            //StartCoroutine(PlayLiquidSound());
         }
     }
     private void GasMovement()
@@ -283,6 +283,7 @@ public class PlayerController : MonoBehaviour
         audioSource.PlayOneShot(liquidAudio, 1.0F);
         yield return new WaitForSeconds(1);
         playedliquid = false;
+        yield break;
     }
 
     IEnumerator PlaySolidSound()
@@ -290,5 +291,6 @@ public class PlayerController : MonoBehaviour
         audioSource.PlayOneShot(solidAudio, 1.0F);
         yield return new WaitForSeconds(1);
         playedSolid = false;
+        yield break;
     }
 }
