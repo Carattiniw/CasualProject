@@ -14,9 +14,11 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
 
     public Vector3 jumpForce;
-    public bool isGrounded;
     public bool isMagnetized;
     public bool isTransitioning;
+    
+    public bool isGrounded;
+    public SphereCollider groundCheck;
 
     private AudioSource audioSource;
     public AudioClip solidAudio;
@@ -33,6 +35,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         animate = GetComponentInChildren<ShiftyAnimation>();
+        groundCheck = GetComponent<SphereCollider>();
         audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
     }
@@ -143,7 +146,6 @@ public class PlayerController : MonoBehaviour
                 {
                     if (currentStateIndex == 0)
                     {
-                        isTransitioning = true;
                         currentStateIndex = 2;
                     }
                     else
@@ -169,24 +171,6 @@ public class PlayerController : MonoBehaviour
             {
                 GasMovement();
             }
-        }
-    }
-
-    void OnCollisionStay(Collision collision)
-    {
-        //only works if player is touching the ground and is in solid state
-        if (collision.collider.tag == "Floor")
-        //if (currentStateString == "Solid") //testing only
-        //if (collision.collider.tag == "Floor") //testing only
-        {
-            isGrounded = true;
-        }
-    }
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.collider.tag == "Floor")
-        {
-            isGrounded = false;
         }
     }
     private void SolidMovement()
@@ -272,6 +256,21 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(move, ForceMode.Acceleration);
     }
 
+    public void OnTriggerStay(Collider other)
+    {
+        if(other.gameObject.CompareTag("Floor"))
+        {
+            isGrounded = true;
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject.CompareTag("Floor"))
+        {
+            isGrounded = false;
+        }    
+    }
     IEnumerator PlayLiquidSound()
     {
         audioSource.PlayOneShot(liquidAudio, 1.0F);
