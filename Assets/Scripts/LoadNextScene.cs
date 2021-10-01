@@ -22,7 +22,6 @@ public class LoadNextScene : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("Player"))
         {
-            /*
             if (SceneManager.GetActiveScene().name == "ArtGallery")
             {
                 winScreen.SetActive(true);
@@ -30,7 +29,6 @@ public class LoadNextScene : MonoBehaviour
                 GameManager.Instance.pause = true;
                 return;
             }
-            */
             SceneManager.LoadScene(loadNextLevel);
         }
     }
