@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (SceneManager.GetActiveScene().name == "MainMenu" || SceneManager.GetActiveScene().name == "Controls" || SceneManager.GetActiveScene().name == "Credits")
+        if (SceneManager.GetActiveScene().name == "MainMenu" || SceneManager.GetActiveScene().name == "Controls" || SceneManager.GetActiveScene().name == "Credits" || SceneManager.GetActiveScene().name == "ArtGallery")
         {
             timer.text = "";
             previousBest.text = "";
@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
         else
         {
             currentTime += Time.deltaTime;
-            timer.text = "CT: " + currentTime.ToString("00:00.0");
+            timer.text = "CT: " + currentTime.ToString("00.0");
             DisplayPreviousBest(SceneManager.GetActiveScene().name);
         }
     }
@@ -56,13 +56,13 @@ public class GameManager : MonoBehaviour
             case "Tutorial":
                 previousBest.text = "PB: " + tutorialBest;
                 return;
-            case "Level1":
+            case "Level 1":
                 previousBest.text = "PB: " + level1Best;
                 return;
-            case "Level2":
+            case "Level 2":
                 previousBest.text = "PB: " + level2Best;
                 return;
-            case "Level3":
+            case "Level 3":
                 previousBest.text = "PB: " + level3Best;
                 return;
             default:

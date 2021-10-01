@@ -15,7 +15,7 @@ public class Pause : MonoBehaviour
     public GameObject resumeMenuButton;
     public GameObject restartLevelButton;
     public EventSystem ES;
-    private GameObject StoreSelected;
+    public GameObject StoreSelected;
     private bool viewedControls;
 
 
@@ -77,6 +77,7 @@ public class Pause : MonoBehaviour
     {
         //pauseScreen.SetActive(false); test to get rid of dark main menu after play
         SceneManager.LoadScene(backToMainMenu);
+        EventSystem.current.SetSelectedGameObject(GameObject.Find("Start"));
     }
 
     public void pauseGame()
@@ -116,5 +117,20 @@ public class Pause : MonoBehaviour
         restartLevelScreen.SetActive(true);
         GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(restartLevelButton, null);
         SceneManager.LoadScene(levelNameToRestart);
+    }
+
+    public void resetLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void TurnOffEverything()
+    {
+        Time.timeScale = 1f;
+        GameManager.Instance.pause = false;
+        GameObject.Find("Win Screen").SetActive(false);
+        EventSystem.current.SetSelectedGameObject(GameObject.Find("Start"));
+        MusicManager.Instance.audioSource.UnPause();
+
     }
 }

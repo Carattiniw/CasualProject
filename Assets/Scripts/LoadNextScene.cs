@@ -25,8 +25,9 @@ public class LoadNextScene : MonoBehaviour
             if (SceneManager.GetActiveScene().name == "ArtGallery")
             {
                 winScreen.SetActive(true);
-                StoreSelected = GameObject.Find("Main Menu Button");
+                EventSystem.current.SetSelectedGameObject(GameObject.Find("Win Main Menu Button"));
                 GameManager.Instance.pause = true;
+                MusicManager.Instance.audioSource.Pause();
                 return;
             }
             SceneManager.LoadScene(loadNextLevel);

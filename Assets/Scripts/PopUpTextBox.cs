@@ -6,13 +6,15 @@ using TMPro;
 public class PopUpTextBox : MonoBehaviour
 {
     private BoxCollider trigger;
+    public GameObject popupHouser;
     [SerializeField]private TextMeshProUGUI popupTMP;
     public string message;
 
     // Start is called before the first frame update
     void Start()
     {
-        popupTMP = GetComponentInChildren<TextMeshProUGUI>();
+        popupHouser = GameObject.Find("PopupHolder");
+        popupTMP = popupHouser.GetComponentInChildren<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
